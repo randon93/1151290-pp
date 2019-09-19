@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Inicio</title>
+  <script type="text/javascript">
+		if (localStorage.getItem("usuario") != null) {
+			window.location = "secciones.html";
+		}
+	</script>
+</head>
+
+
+<body >
+
+  <header class="header-index">
+    <h1>LOGIN</h1>
+  </header>
+
+  <div class="contenedor-form">
+    <div>
+      <!-- <span>Crear Cuenta</span> -->
+    </div>
+
+    <div class="formulario">
+      <h1>Iniciar Sesión</h1>
+      <form action="#">
+        <input id="user_log" type="text" placeholder="Usuario" value="" required>
+        <input id="pass_log" type="password" placeholder="Contraseña" required>
+        <input type="submit" value="Iniciar Sesión" id="input_log" onclick="traerDatos2()">
+      </form>
+    </div>
+
+    <!-- <div class="formulario">
+      <h1>Crea tu Cuenta</h1>
+      <form action="#">
+        <input id = "name_reg" type="text" placeholder="Nombres" required>
+        <input id = "ape_reg" type="text" placeholder="Apellidos" required>
+        <input id = "user_reg" type="text" placeholder="Usuario" required>
+        <input id = "pass_reg" type="password" placeholder="Contraseña" required>
+        <input id = "email_reg" type="email" placeholder="Correo Electrónico" required>
+        <input id = "tlf_reg" type="text" placeholder="Teléfono" required>
+        <input type="button" value="Registrarse" id= "input-reg" onClick="registrar()"/>
+      </form>
+    </div> -->
+
+    <!-- <div class="reset-password">
+      <a href="#">TEST</a>
+    </div> -->
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/login.js"></script>
+
+  <script type="text/javascript">
+  $("#input_log").click(function() {
+    let cols;
+    if (this.dataset.cols != null) {
+      cols = this.dataset.cols.split(",");
+    }
+    traerDatos2('#table72','cartas.json', cols)
+  });
+
+  function traerDatos2() {
+
+    $.ajax({
+      url: 'cartas.json',
+      success: function(respuesta) {
+
+        let datos = respuesta; //JSON.parse(respuesta);
+        localStorage.setItem("json", respuesta);
+        cosnole.log("Hola");
+        cosnole.log(respuesta);
+      }
+    });
+  }
+  </script>
+
+</body>
+
+</html>
